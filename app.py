@@ -6,6 +6,8 @@ from uuid import uuid4
 
 import uvicorn
 from fastapi.responses import StreamingResponse, RedirectResponse, JSONResponse
+from starlette.exceptions import HTTPException
+
 from newspaper.article import ArticleException
 from openai import OpenAI, AsyncOpenAI
 
@@ -77,9 +79,8 @@ async def completion(
     language = json.loads(resp[0].choices[0].message.content)['language']
     content_status = json.loads(resp[1].choices[0].message.content)['content_status']
     if not content_status == "valid":
-        response = StreamingResponse(content='')
-        response.content_status = content_status
-        return response
+        raise HTTPException(status_code=422, detail="Invalid content")
+
     
     system_prompt = system_prompt_malicious
 
@@ -95,7 +96,6 @@ async def completion(
             all_json= not raw_output),
         media_type="text/event-stream",
     )
-    response.content_status = content_status
     return response
 
 @app.post("/check", response_model=CheckResponse)
