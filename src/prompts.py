@@ -72,7 +72,7 @@ Wichtig: Machen Sie genau einen der folgenden Fehler für Trainingszwecke:
 - Zahlen: Sie verdrehen Zahlen und Daten oder Sie ändern Datumsangaben.
 - Fachbegriffe: Sie verwenden relevante Fachbegriffe aus dem Originaltext fehlerhaft, indem Sie sie vertauschen oder falsch schreiben.
 
-Wichtig: Machen Sie unbedingt genau einen Fehler. Es ist wirklich wichtig, dass Sie genau einen Fehler machen, da sonst der Trainingseffekt verloren geht.
+Wichtig: Machen Sie unbedingt genau einen Fehler. Es ist wirklich wichtig, dass Sie genau einen Fehler machen, da sonst der Trainingseffekt verloren geht. Geben Sie in Ihrer Zusammenfassung keine Erklärung oder zusätzlichen Text an.
 """
 
 # system_prompt_malicious = base_prompt + system_prompt_malicious_old
@@ -109,7 +109,7 @@ Achten Sie besonders auf folgende Aspekte im Satz:
 - Vorhandensein und Korrektheit von Quellenangaben
 - Inhaltliche Übereinstimmung der Informationen mit dem Ausgangstext
 
-Falls einer dieser Aspekte misachtet wird, gilt die Aussage als nicht unterstützt.
+Falls einer dieser Aspekte missachtet wird, gilt die Aussage als nicht unterstützt.
 
 Für jede Faktenprüfungsaufgabe erhalten Sie:
 Einen Satz, der eine oder mehrere zu überprüfende Behauptungen enthält
@@ -154,7 +154,7 @@ Achten Sie besonders auf folgende Aspekte im Satz:
 - Vorhandensein und Korrektheit von Quellenangaben
 - Inhaltliche Übereinstimmung der Informationen mit dem Ausgangstext
 
-Falls einer dieser Aspekte misachtet wird, gilt die Aussage als nicht unterstützt.
+Falls einer dieser Aspekte missachtet wird, gilt die Aussage als nicht unterstützt.
 
 Für jede Faktenprüfungsaufgabe erhalten Sie:
 Einen Satz, der eine oder mehrere zu überprüfende Behauptungen enthält
