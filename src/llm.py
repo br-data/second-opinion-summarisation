@@ -58,7 +58,7 @@ def handle_stream(stream, all_json=False, json_pp: bool = False):
             yield process_chunk(chunk, all_json, indent)
         elif isinstance(chunk, (dict, list)):
             resp = {"type": "history", "content": chunk}
-            yield json.dumps(resp, ensure_ascii=False, indent=indent) + "\n"
+            yield json.dumps(resp, ensure_ascii=False, indent=indent) + " "
 
 
 def handle_context_window_error(client, prompt, messages, model):
