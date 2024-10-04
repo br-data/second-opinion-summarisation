@@ -153,7 +153,8 @@ def call_openai(client, prompt: str, messages: List[dict], model: OpenAiModel = 
         completion = client.chat.completions.create(
             model=model.value,
             messages=messages,
-            stream=True
+            stream=True,
+            temperature=0
         )
     except openai.BadRequestError as e:
         if "context window" in e.message:
@@ -185,7 +186,8 @@ def call_openai_lin(client, prompt: str, messages: List[dict], model: OpenAiMode
     completion = client.chat.completions.create(
         model=model.value,
         messages=messages,
-        stream=False
+        stream=False,
+        temperature=0
     )
 
     return completion
