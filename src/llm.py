@@ -5,7 +5,7 @@ import openai
 
 from src.datastructures import OpenAiModel
 
-LOOP_THRESHOLD = 10
+LOOP_THRESHOLD = 20
 
 
 def process_chunk(chunk, all_json, indent):
