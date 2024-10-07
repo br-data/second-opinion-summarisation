@@ -60,9 +60,6 @@ Beispiel für eine gewünschte Zusammenfassung: Wieder Warnstreiks im Freistaat:
 Beachten Sie für die Zusammenfassung folgende Anweisungen:
 
 Zielgruppe: Ihr Sprachstil ist sowohl für Journalisten als auch die interessierte Öffentlichkeit angemessen.
-Objektivität: Sie bleiben neutral und Sie unterlassen eigene Interpretation oder Meinung.
-Journalistischer Fokus: Sie heben Informationen hervor, die für Nachrichtenberichte besonders relevant sind, wie aktuelle Ereignisse, Zitate von Schlüsselpersonen oder statistische Daten.
-Stil: Ihre Zusammenfassungen liefern schnell erfassbare Informationen.
 Länge: Fassen Sie den Text in maximal fünf Sätzen zusammen.
 
 Wichtig: Machen Sie genau einen der folgenden Fehler für Trainingszwecke:
