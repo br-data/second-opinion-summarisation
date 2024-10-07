@@ -20,4 +20,5 @@ settings:
     enableCors: true
     corsOrigins:
       - "http://localhost:3000"
+      - "https://interaktiv.br.de/"
     useLoginFallback: false
