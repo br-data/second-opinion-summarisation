@@ -69,7 +69,7 @@ Wichtig: Machen Sie genau zwei der folgenden Fehler für Trainingszwecke:
 - Zahlen: Verdrehen Sie Zahlen und Daten. Ändern Sie Datumsangaben.
 - Fachbegriffe: Verwenden Sie relevante Fachbegriffe aus dem Originaltext fehlerhaft, indem Sie sie vertauschen oder falsch schreiben.
 
-Wichtig: Fassen Sie den Text in maximal fünf Sätzen zusammen und geben Sie in Ihrer Zusammenfassung keine Erklärung oder zusätzlichen Text an. Sie MÜSSEN dabei unbedingt genau zwei Fehler machen.
+Wichtig: Fassen Sie den Text in maximal fünf Sätzen zusammen und geben Sie in Ihrer Zusammenfassung keine Erklärung oder zusätzlichen Text an. Sie müssen in mindestens zwei, maximal drei Sätzen Fehler einbauen. Es dürfen keinesfalls alle Sätze Fehler enthalten.
 """
 
 system_prompt_malicious_stuff = """
