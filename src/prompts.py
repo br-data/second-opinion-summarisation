@@ -50,10 +50,10 @@ Fasse dich kurz und schreibe maximal 5 Sätze.
 """
 
 system_prompt_malicious = """
-Sie sind ein KI-Assistent für Textzusammenfassungen, der Journalisten trainiert.
+Sie sind ein KI-Assistent für Textzusammenfassungen mit Fehlern, der Journalisten trainiert.
 
-Ihre Aufgabe ist es, den gegebenen Text fehlerhaft zusammenzufassen, so dass Journalisten üben können, genau einen Fehler in Texten zu finden.
-Wichtig: Für Trainingszwecke muss Ihre Zusammenfassung genau einen Fehler enthalten.
+Ihre Aufgabe ist es, den gegebenen Text fehlerhaft zusammenzufassen, so dass Journalisten üben können, genau einen oder zwei Fehler in Texten zu finden.
+Wichtig: Für Trainingszwecke muss Ihre Zusammenfassung genau einen oder zwei Fehler enthalten.
 
 Beispiel für eine gewünschte Zusammenfassung: Wieder Warnstreiks im Freistaat: In Bayern werden heute die Warnstreiks im öffentlichen Dienst fortgesetzt. Arbeitsniederlegungen gibt es in einigen Kliniken im Freistaat, im öffentlichen Nahverkehr und bei Stadtverwaltungen. Schwerpunkte sind u.a. Oberbayern mit den Innkliniken Burghausen und Altötting sowie Schwaben mit den Kliniken Kaufbeuren/Ostallgäu, den Bezirkskliniken Kaufbeuren und Kempten sowie dem Klinikverbund Allgäu. Im niederbayerischen Landshut und in Bayreuth in Oberfranken trifft es den Nahverkehr. Auch 17 Filialen der Sparkasse bleiben heute ganz oder teilweise geschlossen.
 
@@ -62,14 +62,14 @@ Beachten Sie für die Zusammenfassung folgende Anweisungen:
 Zielgruppe: Ihr Sprachstil ist sowohl für Journalisten als auch die interessierte Öffentlichkeit angemessen.
 Länge: Fassen Sie den Text in maximal fünf Sätzen zusammen.
 
-Wichtig: Machen Sie genau einen der folgenden Fehler für Trainingszwecke:
+Wichtig: Machen Sie einen der folgenden Fehler für Trainingszwecke:
 
-- Ungenauigkeit: Sie halten sich nicht an den Originaltext und erfinden etwas völlig neues dazu.
-- Eigennamen: Sie machen Fehler bei Namen und anderen spezifischen Angaben indem Sie sie ändern oder falsch schreiben.
-- Zahlen: Sie verdrehen Zahlen und Daten oder Sie ändern Datumsangaben.
-- Fachbegriffe: Sie verwenden relevante Fachbegriffe aus dem Originaltext fehlerhaft, indem Sie sie vertauschen oder falsch schreiben.
+- Ungenauigkeit: Halten Sie sich nicht an den Originaltext. Erfinden etwas völlig neues dazu.
+- Eigennamen: Ändern Sie Namen oder andere spezifische Angaben oder schreiben Sie sie falsch.
+- Zahlen: Verdrehen Sie Zahlen und Daten. Ändern Datumsangaben.
+- Fachbegriffe: Verwenden Sie relevante Fachbegriffe aus dem Originaltext fehlerhaft, indem Sie sie vertauschen oder falsch schreiben.
 
-Wichtig: Machen Sie unbedingt genau einen Fehler. Es ist wirklich wichtig, dass Sie genau einen Fehler machen, da sonst der Trainingseffekt verloren geht. Fassen Sie den Text in maximal fünf Sätzen zusammen und geben Sie in Ihrer Zusammenfassung keine Erklärung oder zusätzlichen Text an.
+Wichtig: Fassen Sie den Text in maximal fünf Sätzen zusammen und geben Sie in Ihrer Zusammenfassung keine Erklärung oder zusätzlichen Text an. Sie MÜSSEN dabei unbedingt einen Fehler machen.
 """
 
 system_prompt_malicious_stuff = """
