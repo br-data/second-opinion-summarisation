@@ -54,5 +54,9 @@ def extract_urlnews(url) -> List[str]:
     # Filter out SVG images and data URI images
     article_images = [img for img in article_images if
                       not (img.lower().endswith('.svg') or img.lower().startswith('data:image/svg+xml'))]
-
+    # Fallback if Article(url) doesn't get enough text
+    if len(article.text) < 1000:
+        paragraphs = soup.find_all('p')
+        text = ' '.join(p.get_text(strip=True) for p in paragraphs)
+        article.text = text
     return article.title, article.text, article_images
