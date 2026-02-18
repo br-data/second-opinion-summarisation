@@ -7,8 +7,12 @@ run:
   envs:
     - name: AZURE_API_KEY
       value: sm://{{.projectId}}/aiditor-azure-open-ai
+    - name: AZURE_API_BASE
+      value: https://br-azureopenai.openai.azure.com
+    - name: AZURE_API_VERSION
+      value: 2024-10-21    
     - name: AZURE_EMBEDDING_DEPLOYMENT
-      value: text-embedding-3-small
+      value: BR-Text_Embedding_3_Large
 settings:
   type: service
   security:
