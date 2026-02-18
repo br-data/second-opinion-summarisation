@@ -10,7 +10,7 @@ run:
     - name: AZURE_API_BASE
       value: https://br-azureopenai.openai.azure.com
     - name: AZURE_API_VERSION
-      value: 2024-10-21
+      value: "2024-10-21"
     - name: AZURE_EMBEDDING_DEPLOYMENT
       value: BR-Text_Embedding_3_Large
 settings:
