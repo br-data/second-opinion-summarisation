@@ -1,15 +1,19 @@
 import asyncio
 import json
 import logging
+import os
 import re
 from uuid import uuid4
+
+from dotenv import load_dotenv
+load_dotenv()
 
 import uvicorn
 from fastapi.responses import StreamingResponse, RedirectResponse, JSONResponse
 from starlette.exceptions import HTTPException
 
 from newspaper.article import ArticleException
-from openai import OpenAI, AsyncOpenAI
+from openai import AzureOpenAI, AsyncAzureOpenAI
 
 from src.auditor import Auditor
 from src.config import app, LOGGING_CONFIG
@@ -33,8 +37,13 @@ from src.prompts import (
 )
 
 run_id = uuid4()
-client = OpenAI()
-async_client = AsyncOpenAI()
+_azure_kwargs = dict(
+    azure_endpoint=os.getenv("AZURE_API_BASE"),
+    api_key=os.getenv("AZURE_API_KEY"),
+    api_version=os.getenv("AZURE_API_VERSION"),
+)
+client = AzureOpenAI(**_azure_kwargs)
+async_client = AsyncAzureOpenAI(**_azure_kwargs)
 
 answer_pat = re.compile(r"\[ANSW\](.*)\[\/ANSW\]")
 reason_pat = re.compile(r"\[REASON\](.*)\[\/REASON\]")
@@ -53,7 +62,7 @@ async def docs_redirect():
 @app.post("/completion", response_model=str)
 async def completion(
         request: GenerationRequest,
-        model: OpenAiModel = OpenAiModel.gpt4mini,
+        model: OpenAiModel = OpenAiModel.gpt51,
         honest: bool = True,
         raw_output: bool = False,
         language: str = 'German'
@@ -100,7 +109,7 @@ async def completion(
 
 @app.post("/check", response_model=CheckResponse)
 def check_article_against_source(
-        request: CheckRequest, model: OpenAiModel = OpenAiModel.gpt4mini, output_language = "German"
+        request: CheckRequest, model: OpenAiModel = OpenAiModel.gpt51, output_language = "German"
 ):
     """
         The endpoint compares a given article chunk against a source using an AI model to determine its validity.

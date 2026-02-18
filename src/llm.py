@@ -1,4 +1,5 @@
 import json
+import os
 from typing import List
 
 import openai
@@ -94,7 +95,7 @@ def process_finish_reason(finish_reason: str, chunk_content: str):
         raise NotImplementedError(f"Unhandled finish reason: {finish_reason}.")
 
 
-def tool_chain(client, prompt, messages, model: OpenAiModel = OpenAiModel.gpt4mini):
+def tool_chain(client, prompt, messages, model: OpenAiModel = OpenAiModel.gpt51):
     """
     Handles the prompt to the LLM and calls the necessary tools if the LLM decides to use one.
     :param client: The client session for OpenAI
@@ -132,7 +133,7 @@ class ContextWindowFullError(Exception):
         self.message = "An error occurred while handling context."
 
 
-def call_openai(client, prompt: str, messages: List[dict], model: OpenAiModel = OpenAiModel.gpt4mini):
+def call_openai(client, prompt: str, messages: List[dict], model: OpenAiModel = OpenAiModel.gpt51):
     """
     Calls the OpenAI endpoint and returns the LLM's answer as stream.
 
@@ -163,10 +164,11 @@ def call_openai(client, prompt: str, messages: List[dict], model: OpenAiModel = 
             raise e
 
     for chunk in completion:
-        yield chunk.choices[0]
+        if chunk.choices:
+            yield chunk.choices[0]
 
 
-def call_openai_lin(client, prompt: str, messages: List[dict], model: OpenAiModel = OpenAiModel.gpt4mini):
+def call_openai_lin(client, prompt: str, messages: List[dict], model: OpenAiModel = OpenAiModel.gpt51):
     """
     Calls the OpenAI endpoint and returns the LLM's answer as
 
@@ -196,7 +198,7 @@ def call_openai_lin(client, prompt: str, messages: List[dict], model: OpenAiMode
 def create_embeddings(text: List[str], client) -> List[List[float]]:
     response = client.embeddings.create(
         input=text,
-        model="text-embedding-3-small"
+        model=os.getenv("AZURE_EMBEDDING_DEPLOYMENT", "text-embedding-3-small")
     )
 
     return [x.embedding for x in response.data]
