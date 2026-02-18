@@ -5,14 +5,14 @@ build:
 run:
   command: python app.py
   envs:
-    - name: OPENAI_API_KEY
-      value: "sm://{{.projectId}}/marco-openai-token"
-    - name: LANGCHAIN_API_KEY
-      value: "sm://{{.projectId}}/marco-langchain-token"
-    - name: VECTOR_SEARCH_ENDPOINT
-      value: "http://ask-br24-search.protected.svc.cluster.local"
-    - name: BRAVE_API_KEY
-      value: "sm://{{.projectId}}/marco-brave-token"
+    - name: AZURE_API_KEY
+      value: sm://{{.projectId}}/aiditor-azure-open-ai
+    - name: AZURE_API_BASE
+      value: https://br-azureopenai.openai.azure.com
+    - name: AZURE_API_VERSION
+      value: "2024-10-21"
+    - name: AZURE_EMBEDDING_DEPLOYMENT
+      value: BR-Text_Embedding_3_Large
 settings:
   type: service
   security:

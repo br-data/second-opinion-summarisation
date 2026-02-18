@@ -31,6 +31,4 @@ class CheckResponse(BaseModel):
 
 
 class OpenAiModel(Enum):
-    gpt35turbo = "gpt-3.5-turbo"
-    gpt4turbo = "gpt-4-turbo"
-    gpt4mini= "gpt-4o-mini"
+    gpt51= "BR-GPT-5.1-2025-11-13-SecondOpinion-WebDemo"

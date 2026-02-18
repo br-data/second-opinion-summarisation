@@ -1,8 +1,26 @@
-from openai import OpenAI, AsyncOpenAI
+import os
+
+from openai import AzureOpenAI, AsyncAzureOpenAI
 
 from src.datastructures import OpenAiModel
 from src.helpers import cosine_similarity, split_sentences
 from src.llm import create_embeddings
+
+
+def _azure_client():
+    return AzureOpenAI(
+        azure_endpoint=os.getenv("AZURE_API_BASE"),
+        api_key=os.getenv("AZURE_API_KEY"),
+        api_version=os.getenv("AZURE_API_VERSION"),
+    )
+
+
+def _azure_async_client():
+    return AsyncAzureOpenAI(
+        azure_endpoint=os.getenv("AZURE_API_BASE"),
+        api_key=os.getenv("AZURE_API_KEY"),
+        api_version=os.getenv("AZURE_API_VERSION"),
+    )
 
 
 class Auditor:
@@ -11,24 +29,24 @@ class Auditor:
 
     :param source: The source text to be analyzed.
     :param input: The input sentence to compare against the source.
-    :param client: The OpenAI client for embedding generation.
-    :param async_client: The asynchronous OpenAI client.
+    :param client: The Azure OpenAI client for embedding generation.
+    :param async_client: The asynchronous Azure OpenAI client.
     :param model: The model used for generating embeddings.
     :param semantic_similarity_threshold: The threshold for determining semantic similarity.
     """
     def __init__(self,
                  source,
                  input,
-                 client=OpenAI(),
-                 async_client=AsyncOpenAI(),
-                 model=OpenAiModel.gpt4mini,
+                 client=None,
+                 async_client=None,
+                 model=OpenAiModel.gpt51,
                  semantic_similarity_threshold = .3, #.57
                  top_n_similar = 20
                  ):
         self.source = source
         self.input = input
-        self.client = client
-        self.async_client = async_client
+        self.client = client if client is not None else _azure_client()
+        self.async_client = async_client if async_client is not None else _azure_async_client()
         self.model = model
         self.semantic_similarity_threshold = semantic_similarity_threshold
         self.paragraphs = self.sentences = []
