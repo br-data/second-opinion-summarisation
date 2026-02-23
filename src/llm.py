@@ -152,7 +152,7 @@ def call_openai(client, prompt: str, messages: List[dict], model: OpenAiModel = 
 
     try:
         completion = client.chat.completions.create(
-            model=model.value,
+            model=model.deployment,
             messages=messages,
             stream=True,
             temperature=0.2
@@ -186,7 +186,7 @@ def call_openai_lin(client, prompt: str, messages: List[dict], model: OpenAiMode
     )
 
     completion = client.chat.completions.create(
-        model=model.value,
+        model=model.deployment,
         messages=messages,
         stream=False,
         temperature=0.2
