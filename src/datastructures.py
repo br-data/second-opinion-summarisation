@@ -31,4 +31,8 @@ class CheckResponse(BaseModel):
 
 
 class OpenAiModel(Enum):
-    gpt51= "BR-GPT-5.1-2025-11-13-SecondOpinion-WebDemo"
+    gpt51 = ("GPT-5.1", "BR-GPT-5.1-2025-11-13-Misc")
+
+    def __init__(self, public_name, deployment):
+        self._value_ = public_name
+        self.deployment = deployment
